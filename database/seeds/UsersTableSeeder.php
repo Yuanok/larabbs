@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Database\Seeder;
+use App\Models\User;
+
+class UsersTableSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $faker = app(Faker\Generator::class);
+        //头像假数据
+        $avatars = [
+            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/s5ehp11z6s.png',
+            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/Lhd1SHqu86.png',
+            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/LOnMrqbHJn.png',
+            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/xAuDMxteQy.png',
+            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png',
+            'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/NDnzMutoxX.png',
+        ];
+        //生成十条数据，且随机选取一个图片做头像
+        $users = factory(User::class)->times(10)->make()->each(function ($user,$index) use ($faker,$avatars){
+            $user->avatar = $faker->randomElement($avatars);
+        });
+
+        //让隐藏字段显示，并转化成数组
+        $user_array = $users->makeVisible(['password','remember_token'])->toArray();
+
+        //插入数据到数据库
+        User::insert($user_array);
+
+        $user = User::find(1);
+        $user->name = 'Yuanok';
+        $user->email = 'yuan@example.com';
+        $user->password = bcrypt('yuanjihua');
+        $user->avatar = 'https://iocaffcdn.phphub.org/uploads/images/201710/14/1/ZqM7iaP4CR.png';
+        $user->save();
+    }
+}
