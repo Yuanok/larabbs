@@ -20,7 +20,7 @@ class UsersController extends Controller
         $data = $request->all();
 
         if($request->avatar){
-            $result =$uploader->save($request->avatar,'avatar',$user->id);
+            $result =$uploader->save($request->avatar,'avatar',$user->id,416);
             //若上传的不是图片，返回false
             if($result){
                 $data['avatar'] = $result['path'];
