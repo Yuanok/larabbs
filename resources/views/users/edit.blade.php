@@ -35,10 +35,10 @@
           <div class="form-group mb-4">
           <label for="" class="avatar-label">用户头像</label><br>
          
-          <input type="file" class="form-controll-file" name="avatar">
+          <input type="file" class="form-control-file" name="avatar">
           @if($user->avatar)
             <br>
-            <img src="{{ $user->avatar}}" alt="" class="thumbnail img-responsive" width="200">
+            <img src="{{ $user->avatar }}" alt="" class="thumbnail img-responsive" width="200">
           @endif
           </div>
           <div class="well well-sm">
