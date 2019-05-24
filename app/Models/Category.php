@@ -10,7 +10,5 @@ class Category extends Model
         'name','description'
     ];
 
-    public function topic(){
-        $this->hasMany(Topic::class);
-    }
+    
 }

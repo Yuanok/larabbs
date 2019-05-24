@@ -22,17 +22,17 @@
           <small class="media-body meta text-secondary">
 
             <a class="text-secondary" href="#" title="{{ $topic->category->name }}">
-              <i class="far fa-folder"></i>
+              <i class="far fa-folder" style="color:#51cf66;"></i>
               {{ $topic->category->name }}
             </a>
 
             <span> • </span>
             <a class="text-secondary" href="{{ route('users.show', [$topic->user_id]) }}" title="{{ $topic->user->name }}">
-              <i class="far fa-user"></i>
+              <i class="far fa-user" style="color: #f06595;"></i>
               {{ $topic->user->name }}
             </a>
             <span> • </span>
-            <i class="far fa-clock"></i>
+            <i class="far fa-clock " style="color:#339af0;"></i>
             <span class="timeago" title="最后活跃于：{{ $topic->updated_at }}">{{ $topic->updated_at->diffForHumans() }}</span>
           </small>
 
