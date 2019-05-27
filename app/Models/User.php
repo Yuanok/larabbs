@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use App\Models\Topic;
 
+
 class User extends Authenticatable
 {
     use Notifiable,MustVerifyEmailTrait;
@@ -41,6 +42,10 @@ class User extends Authenticatable
 
     public function topics(){
         return $this->hasMany(Topic::class);
+    }
+
+    public function isAuthorOf($model){
+        return $this->id == $model->user_id;
     }
     
 }
