@@ -19,7 +19,7 @@ class ReplyObserver
     {
         $reply->topic->reply_count = $reply->topic->replies->count();
         $reply->topic->save();
-
+        //触发通知
         $reply->topic->user->notify(new TopicReplied($reply));
     }
 

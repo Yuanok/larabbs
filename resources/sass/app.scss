@@ -143,3 +143,18 @@ html {
         color: #b3b3b3;
     }
 }
+/* 消息通知 */
+.notification-badge {
+    .badge {
+      font-size: 12px;
+      margin-top: 12px;
+    }
+  
+    .badge-secondary {
+      background-color: rgba(134, 134, 134, 0.438);
+    }
+  
+    .badge-hint {
+      background-color: #d15b47 !important;
+    }
+  }

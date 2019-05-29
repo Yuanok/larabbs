@@ -20,6 +20,7 @@ class User extends Authenticatable
 
     public function notify($instance){
         //如果通知的人为当前用户就不用通知
+        // this是指话题作者
         if($this->id == Auth::id()){
             return;
         }
@@ -68,6 +69,12 @@ class User extends Authenticatable
 
     public function isAuthorOf($model){
         return $this->id == $model->user_id;
+    }
+
+    public function markAsRead(){
+        $this->notification_count =0;
+        $this->save();
+        $this->unreadNotifications->markAsRead();
     }
     
 }
