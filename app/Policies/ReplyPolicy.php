@@ -15,6 +15,7 @@ class ReplyPolicy extends Policy
 
     public function destroy(User $user, Reply $reply)
     {
-        return true;
+        //    当前登录用户ID与创建帖子的用户ID相同       当前用户ID与该评论的用户ID相同
+        return $user->isAuthorOf($reply->topic)   ||  $user->isAuthorOf($reply);
     }
 }
