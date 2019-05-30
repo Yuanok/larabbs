@@ -59,7 +59,11 @@ return array(
      *	)
      */
     'menu' => [
-        '用户权限' => ['users'],
+        '用户权限' => [
+            'users',
+            'roles',
+            'permissions'
+        ],
     ],
 
     /*
