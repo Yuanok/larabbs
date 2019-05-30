@@ -79,4 +79,18 @@ class User extends Authenticatable
         $this->unreadNotifications->markAsRead();
     }
     
+    public function setPasswordAttribute($value){
+        if(strlen($value) != 60 ){
+            //密码长度不等于60，密码没有哈希加密
+              $value = bcrypt($value);
+        }
+        $this->attributes['password'] = $value;
+    }
+
+    public function setAvatarAttribute($path){
+        if(!starts_with($path,'http')){
+           $path = config('app.url')."/uploads/images/avatar/".$path; 
+        }
+        $this->attributes['avatar'] = $path;
+    }
 }
